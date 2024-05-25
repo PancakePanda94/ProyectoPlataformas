@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     public float Speed;
     public float JumpForce;
@@ -10,7 +10,12 @@ public class NewBehaviourScript : MonoBehaviour
     private Animator Animator;
     private float Horizontal;
     private bool Grounded;
+    private int Health = 3;
+    private int MaxHealth = 3;
+    public SpriteRenderer playerSr;
+    
     // Start is called before the first frame update
+    //aa
     void Start()
     {
         Rigidbody2D=GetComponent<Rigidbody2D>();
@@ -23,22 +28,42 @@ public class NewBehaviourScript : MonoBehaviour
         Horizontal = Input.GetAxisRaw("Horizontal");
         Animator.SetBool("PlayerJumping", (Rigidbody2D.velocity.y > 0 && !Grounded));
         Animator.SetBool("PlayerFalling", (Rigidbody2D.velocity.y < 0 && !Grounded));
-        Animator.SetBool("PlayerGrounded", Grounded);
+        
+
         if (Horizontal < 0.0f) transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
         else if (Horizontal > 0.0f) transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+
         Animator.SetBool("PlayerMovement", Horizontal != 0.0f);
+
         Debug.DrawRay(transform.position, Vector3.down * 0.125f, Color.red);
-        if (Physics2D.Raycast(transform.position, Vector3.down, 0.125f)) 
-        Grounded = true;
-        else Grounded = false;
-        
+
+        if (Physics2D.Raycast(transform.position, Vector3.down, 0.125f))
+         Grounded = true;
+        else  Grounded = false; 
+        //print(Grounded);
+
+        Animator.SetBool("PlayerGrounded", Grounded);
+        //if (Physics2D.Raycast(transform.position, Vector3.down, 0.12f))
+        //    Grounded = true;
+        //else Grounded = false;
+
         if (Input.GetKeyDown(KeyCode.W) && Grounded)
         {
             
             Jump();
         }
+
+    }
+    public int getHealth()
+    {
+        return Health;
     }
 
+    public int getMaxHealth()
+    {
+        return MaxHealth;
+    }
+        
     private void Jump()
     {
         
@@ -49,5 +74,16 @@ public class NewBehaviourScript : MonoBehaviour
     private void FixedUpdate()
     {
         Rigidbody2D.velocity = new Vector2(Horizontal, Rigidbody2D.velocity.y);
+    }
+
+    public void Hit()
+    {
+        Health--;
+        if(Health <= 0)
+        {
+            playerSr.enabled = false;
+            Speed = 0;
+            this.enabled = false;
+        }
     }
 }

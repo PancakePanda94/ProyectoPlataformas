@@ -1,4 +1,3 @@
-repository "ProyectoPlataformas@PancakePanda94@cloud"
+rep "ProyectoPlataformas@PancakePanda94@cloud"
   path "/"
-    br "/main"
-    co "/main"
+    smartbranch "/main"
