@@ -28,19 +28,20 @@ public class PlayerMovement : MonoBehaviour
         Horizontal = Input.GetAxisRaw("Horizontal");
         Animator.SetBool("PlayerJumping", (Rigidbody2D.velocity.y > 0 && !Grounded));
         Animator.SetBool("PlayerFalling", (Rigidbody2D.velocity.y < 0 && !Grounded));
-        
+        //print(Rigidbody2D.velocity.y);
+        LayerMask groundLayer = LayerMask.GetMask("Ground");
 
         if (Horizontal < 0.0f) transform.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
         else if (Horizontal > 0.0f) transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 
         Animator.SetBool("PlayerMovement", Horizontal != 0.0f);
 
-        Debug.DrawRay(transform.position, Vector3.down * 0.125f, Color.red);
+        Debug.DrawRay(transform.position, Vector3.down * 0.145f, Color.red);
 
-        if (Physics2D.Raycast(transform.position, Vector3.down, 0.125f))
+        if (Physics2D.Raycast(transform.position, Vector3.down, 0.145f, groundLayer))
          Grounded = true;
         else  Grounded = false; 
-        //print(Grounded);
+       //print(Grounded);
 
         Animator.SetBool("PlayerGrounded", Grounded);
         //if (Physics2D.Raycast(transform.position, Vector3.down, 0.12f))

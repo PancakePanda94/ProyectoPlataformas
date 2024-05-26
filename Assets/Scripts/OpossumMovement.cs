@@ -68,10 +68,29 @@ public class OpossumMovement : MonoBehaviour
         PlayerMovement player = collision.collider.GetComponent<PlayerMovement>();
         OpossumMovement opossum = collision.collider.GetComponent<OpossumMovement>();
 
+        if(collision.collider.CompareTag("Weak Point"))
+            Stomp();
         if (player != null)
         {
             player.Hit();
         }
+
+
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Weak Point"))
+        {
+            // Handle stomp detection
+            print("Enemy stomped by player.");
+            Debug.Log("Enemy stomped by player.");
+            Stomp();
+        }
+    }
+
+    private void Stomp()
+    {
+        Destroy(gameObject);
+    }
 }
