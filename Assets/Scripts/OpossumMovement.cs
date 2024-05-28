@@ -69,10 +69,15 @@ public class OpossumMovement : MonoBehaviour
         OpossumMovement opossum = collision.collider.GetComponent<OpossumMovement>();
 
         if(collision.collider.CompareTag("Weak Point"))
-            Stomp();
-        if (player != null)
         {
-            player.Hit();
+            Stomp();
+        }
+        else
+        {
+            if (player != null)
+            {
+                player.Hit();
+            }
         }
 
 

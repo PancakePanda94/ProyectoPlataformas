@@ -87,4 +87,14 @@ public class PlayerMovement : MonoBehaviour
             this.enabled = false;
         }
     }
+    //Regen if necesary
+    //public void Regen()
+    //{
+    //    Health++;
+    //    if (Health > 3)
+    //    {
+    //        Health = 3;
+    //    }
+    //}
+
 }
