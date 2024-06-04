@@ -1,12 +1,8 @@
 ﻿using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
-using UnityEngine.UI;
 using TMPro;
 
 public class Score : MonoBehaviour
-
 {
-    // Update is called once per frame
     public int score;
     public string username;
     public string email;
@@ -14,23 +10,47 @@ public class Score : MonoBehaviour
 
     private UserManager userManager;
 
-
     void Start()
-
     {
-
         userManager = GetComponent<UserManager>();
+        if (userManager == null)
+        {
+            Debug.LogError("UserManager component not found on the GameObject.");
+            return;
+        }
 
-        Debug.Log("Username: " + userManager.Username);
+        // Attempt to log the user
+        userManager.LogUser();
 
-        Debug.Log("Email: " + userManager.Email);
-
+        // Initialize the UI
+        UpdateScoreUI();
     }
+
     void Update()
     {
-        username = userManager.Username;
-        email = userManager.Email;
+        if (userManager != null)
+        {
+            username = userManager.Username;
+            email = userManager.Email;
+
+            // Log to confirm the properties are being accessed
+            Debug.Log($"Accessing Username: {username}, Email: {email}");
+        }
+
         score = EnemyStomp.enemiesKilled;
-        scoreUI.text = "Nombre: "+username +" Email: "+email+" Puntaje: "+score.ToString();
+        UpdateScoreUI();
+    }
+
+    void UpdateScoreUI()
+    {
+        if (scoreUI != null)
+        {
+            scoreUI.text = $"Nombre: {username} Email: {email} Puntaje: {score}";
+            Debug.Log($"Updating UI: Nombre: {username} Email: {email} Puntaje: {score}");
+        }
+        else
+        {
+            Debug.LogError("scoreUI is not assigned.");
+        }
     }
 }

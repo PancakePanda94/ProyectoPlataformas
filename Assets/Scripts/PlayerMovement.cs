@@ -13,13 +13,16 @@ public class PlayerMovement : MonoBehaviour
     private int Health = 3;
     private int MaxHealth = 3;
     public SpriteRenderer playerSr;
-    
+    private UserManager userManager;
+    public int finalscore;
+
     // Start is called before the first frame update
     //aa
     void Start()
     {
         Rigidbody2D=GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();
+        userManager = GetComponent<UserManager>();
     }
 
     // Update is called once per frame
@@ -61,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (Health <= 0)
         {
-            //=EnemyStomp.enemiesKilled
+            finalscore=userManager.EnemiesDefeated; 
         }
 
     }
