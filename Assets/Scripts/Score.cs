@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
+using TMPro;
 
-
-public class KillCountDisplay : MonoBehaviour
+public class Score : MonoBehaviour
 {
     // Update is called once per frame
-    private int score;
+    public int score;
+    public TextMeshProUGUI scoreUI;
     void Update()
     {
-        score = EnemyStomp.enemiesKilled;
+        
+        score = 100*EnemyStomp.enemiesKilled;
+        scoreUI.text=score.ToString();
         //ScoreText.text = "Score: " + score; <--connect to ScoreText (TMP)
     }
 }
