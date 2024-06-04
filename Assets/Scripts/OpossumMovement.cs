@@ -71,6 +71,7 @@ public class OpossumMovement : MonoBehaviour
         if(collision.collider.CompareTag("Weak Point"))
         {
             Stomp();
+            
         }
         else
         {

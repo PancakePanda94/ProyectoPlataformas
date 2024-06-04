@@ -54,7 +54,18 @@ public class PlayerMovement : MonoBehaviour
             Jump();
         }
 
+        if (transform.position.y >= 10 || transform.position.y <= -10)
+        {
+            Health = 0;
+            //You die
+        }
+        if (Health <= 0)
+        {
+            //=EnemyStomp.enemiesKilled
+        }
+
     }
+
     public int getHealth()
     {
         return Health;
@@ -88,13 +99,13 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     //Regen if necesary
-    //public void Regen()
-    //{
-    //    Health++;
-    //    if (Health > 3)
-    //    {
-    //        Health = 3;
-    //    }
-    //}
+    public void Regen()
+    {
+        Health++;
+        if (Health > 3)
+        {
+            Health = 3;
+        }
+    }
 
 }

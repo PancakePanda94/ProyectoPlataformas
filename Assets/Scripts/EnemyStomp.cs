@@ -13,14 +13,15 @@ public class EnemyStomp : MonoBehaviour
         if (collision.gameObject.tag == "Weak Point")
         {
             Destroy(gameObject);
-            //player.Regen();
             enemiesKilled++; // Increment the counter when the weak point is hit
+            player.Regen();
         }
 
         if (player != null)
         {
             Destroy(gameObject.transform.parent.gameObject);
             enemiesKilled++; // Increment the counter when the player destroys the enemy
+            player.Regen();
         }
     }
 
