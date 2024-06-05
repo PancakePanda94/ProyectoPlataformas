@@ -4,6 +4,7 @@ using TMPro;
 public class Score : MonoBehaviour
 {
     public int score;
+    public int id;
     public string username;
     public string email;
     public TextMeshProUGUI scoreUI;
@@ -20,12 +21,13 @@ public class Score : MonoBehaviour
         //}
 
         // Attempt to log the user
-        userManager.LogUser();
-       email = userManager.getEmail();
-       username = userManager.getUsername();
-        // Initialize the UI
-        Debug.Log($"Accessing Username: {username}, Email: {email}");
-        UpdateScoreUI();
+       // userManager.LogUser();
+       //email = userManager.getEmail();
+       //username = userManager.getUsername();
+       // id = userManager.getId();
+       // // Initialize the UI
+       // Debug.Log($"Accessing Username: {username}, Email: {email}");
+       // UpdateScoreUI();
     }
 
     void Update()
