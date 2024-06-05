@@ -5,19 +5,28 @@ using UnityEngine.UI;
 
 public class UserManager : MonoBehaviour
 {
+    public UserManager()
+    {
+
+    }
     public Text wrapperText;
     public string Username { get; private set; }
     public string Email { get; private set; }
     public int EnemiesDefeated { get; private set; }
-
+    public string userName;
+    public string password;
     public void LogUser()
     {
-        
-        string userName = "Martin";
-        string password = "1234";
-        Debug.Log($"Accessing Username: {userName}, Email: {password}");
+
+        userName = "Martin";
+        password = "1234";
+        //Debug.Log($"Accessing Username: {userName}, Email: {password}");
         StartCoroutine(LogUserCoroutine(userName, password));
     }
+
+    public string getUsername() { return Username; }
+
+    public string getEmail() {  return Email; }
 
     private IEnumerator LogUserCoroutine(string userName, string password)
     {

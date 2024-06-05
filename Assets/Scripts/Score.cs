@@ -7,22 +7,24 @@ public class Score : MonoBehaviour
     public string username;
     public string email;
     public TextMeshProUGUI scoreUI;
-
-    private UserManager userManager;
+    public int stomp = 0;
+    private UserManager userManager = new UserManager();
 
     void Start()
     {
-        userManager = GetComponent<UserManager>();
-        if (userManager == null)
-        {
-            Debug.LogError("UserManager component not found on the GameObject.");
-            return;
-        }
+       //userManager = GetComponent<UserManager>();
+        //if (userManager == null)
+        //{
+        //    Debug.LogError("UserManager component not found on the GameObject.");
+        //    return;
+        //}
 
         // Attempt to log the user
         userManager.LogUser();
-
+       email = userManager.getEmail();
+       username = userManager.getUsername();
         // Initialize the UI
+        Debug.Log($"Accessing Username: {username}, Email: {email}");
         UpdateScoreUI();
     }
 
@@ -30,19 +32,25 @@ public class Score : MonoBehaviour
     {
         if (userManager != null)
         {
-            username = userManager.Username;
-            email = userManager.Email;
-
+            //username = userManager.Username;
+            // email = userManager.Email;
+            email = userManager.getEmail();
+            username = userManager.getUsername();
             // Log to confirm the properties are being accessed
-            Debug.Log($"Accessing Username: {username}, Email: {email}");
+            //Debug.Log($"Accessing Username: {username}, Email: {email}");
         }
 
         score = EnemyStomp.enemiesKilled;
-        UpdateScoreUI();
+        if (score != stomp) {
+            stomp = score;
+            UpdateScoreUI();
+        }
+        
     }
 
     void UpdateScoreUI()
     {
+
         if (scoreUI != null)
         {
             scoreUI.text = $"Nombre: {username} Email: {email} Puntaje: {score}";

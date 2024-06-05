@@ -427,6 +427,7 @@ MonoBehaviour:
   Speed: 1
   JumpForce: 150
   playerSr: {fileID: 140374519}
+  finalscore: 0
 --- !u!114 &140374526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,6 +465,7 @@ MonoBehaviour:
   username: 
   email: 
   scoreUI: {fileID: 1532274132}
+  stomp: 0
 --- !u!1 &178341973
 GameObject:
   m_ObjectHideFlags: 0
@@ -977,7 +979,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -459, y: 215}
+  m_AnchoredPosition: {x: -460, y: 440}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &567295102
@@ -6361,6 +6363,7 @@ GameObject:
   - component: {fileID: 1532274133}
   - component: {fileID: 1532274132}
   - component: {fileID: 1532274134}
+  - component: {fileID: 1532274135}
   m_Layer: 5
   m_Name: ScoreText
   m_TagString: Untagged
@@ -6384,7 +6387,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -600, y: -70}
+  m_AnchoredPosition: {x: -174, y: -59}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1532274132
@@ -6407,7 +6410,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Score:'
+  m_text: 'Score:
+
+
+
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6434,8 +6442,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 69
-  m_fontSizeBase: 69
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -6497,9 +6505,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
-  username: 
-  email: 
+  username: polpol
+  email: pol@gmail.com
   scoreUI: {fileID: 1532274132}
+  stomp: 0
+--- !u!114 &1532274135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1532274130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd12ef918753b8b45bd62bee2349c777, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wrapperText: {fileID: 0}
+  userName: 
+  password: 
 --- !u!1 &1533700306
 GameObject:
   m_ObjectHideFlags: 0
@@ -7179,7 +7203,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -852, y: 215}
+  m_AnchoredPosition: {x: -860, y: 440}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1879822082
@@ -7547,7 +7571,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -657, y: 214}
+  m_AnchoredPosition: {x: -660, y: 440}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1952659099
